@@ -9,7 +9,6 @@ weight: 6
 - `$defined(<expr>)` returns true if the expression inside is defined.
 - `$alignof(<expr>)` returns alignment.
 - `$sizeof(<expr>)` returns size.
-- `$checks(<expr>)` returns true if the expression inside is valid.
 - `$qnameof(<identifier>)` to get the qualified name of the identifier, e.g `std::io::printf`
 - `$nameof(<identifier>)` to get the base name of the identifier, e.g. `printf`
 - `$typeof(<expr>)` returns the type of the expression.
@@ -19,4 +18,22 @@ weight: 6
 - `<type>.nameof` return the name of a type.
 
 See https://c3-lang.org/reflection/ for the full details.
-{{<end19>}}
+{{<end>}}
+
+{{<defcod>}}
+import std::io;
+
+fn void main()
+{
+	int x;
+	double y;
+
+	if ($defined(z))
+	{
+		io::printfn("hello, world");
+	}
+	io::printfn($qnameof(io::printfn));
+	io::printfn("%s %s", $sizeof(x), $sizeof(y));
+	io::printfn("isz has size: %d", isz.sizeof);
+}
+{{</defcod>}}

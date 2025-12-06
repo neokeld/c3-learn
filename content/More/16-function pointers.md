@@ -5,5 +5,5 @@ weight: 16
 ---
 {{<start>}}
 - Similar to C function pointers.
-- Function pointer types must be defined explicitly using `def`, they cannot be defined inline in the function declaration.
+- Function pointer types must be defined explicitly using `alias`, they cannot be defined inline in the function declaration.
 {{<end29>}}

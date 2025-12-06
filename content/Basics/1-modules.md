@@ -17,7 +17,7 @@ import libc;
 
 fn void main()
 {
-    io::printfn("Our server's password: %d", libc::rand());
+	io::printfn("Our server's password: %d", libc::rand());
 }
 {{</defcod>}}
 
