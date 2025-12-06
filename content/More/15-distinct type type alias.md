@@ -1,0 +1,12 @@
+---
+title: "Distinct Types & Type Aliases"
+slug: "distinct type type alias"
+weight: 15
+---
+{{<start>}}
+- Uses the uniform `def` syntax.
+- Regular type aliases are the same as C `typedef`.
+- Distinct types are type aliases that doesn't implicitly convert to the aliased type.
+- `distinct inline` types can automatically convert to its underlying type, but otherwise works as distinct types.
+{{<end28>}}
+

@@ -1,0 +1,9 @@
+---
+title: "Functions"
+slug: "functions"
+weight: 4
+---
+{{<start>}}
+- Regular functions are the same as C aside from the keyword `fn`, which is followed by the conventional C declaration of `<return type> <name>(<parameter list>)`.
+{{<end4>}}
+

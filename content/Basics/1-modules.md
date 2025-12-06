@@ -1,0 +1,23 @@
+---
+title: "Modules"
+slug: "modules"
+weight: 1
+---
+{{<start>}}
+- C3 groups functions, types, variables and macros into namespaces called modules.
+- When doing builds, any C3 file must start with the `module` keyword, specifying the module.
+- When compiling single files, the module is not needed and the module name is assumed to be the file name, converted to lower case, with any invalid characters replaced by underscore (`_`).
+{{<end>}}
+
+{{<defcod>}}
+module example;
+
+import std::io;
+import libc;
+
+fn void main()
+{
+    io::printfn("Our server's password: %d", libc::rand());
+}
+{{</defcod>}}
+

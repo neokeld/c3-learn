@@ -9,5 +9,13 @@ weight: 0
 - The purpose of this tutorial is to get you started programming in C3 as soon as possible.
 - This tutorial assumes some familiarity with the C language.
 - Begin with Hello World!
-{{<end0>}}
+{{<end>}}
 
+{{<defcod>}}
+import std::io;
+
+fn void main()
+{
+	io::printfn("hello, world");
+}
+{{</defcod>}}

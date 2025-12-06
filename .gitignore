@@ -3,3 +3,4 @@ other-bak/
 public/
 resources/
 themes/hugo-geekdoc.updated/
+.hugo_build.lock
