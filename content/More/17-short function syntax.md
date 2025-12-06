@@ -1,6 +1,8 @@
 ---
 title: "Short Function Syntax"
 slug: "short function syntax"
+aliases:
+ - "/More/30"
 weight: 17
 ---
 {{<start>}}

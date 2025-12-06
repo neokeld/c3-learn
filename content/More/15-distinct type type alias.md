@@ -1,6 +1,8 @@
 ---
 title: "Distinct Types & Type Aliases"
 slug: "distinct type type alias"
+aliases:
+ - "/More/28"
 weight: 15
 ---
 {{<start>}}

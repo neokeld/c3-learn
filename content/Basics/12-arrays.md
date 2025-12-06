@@ -1,6 +1,8 @@
 ---
 title: "Arrays"
 slug: "arrays"
+aliases:
+ - "/Basics/12"
 weight: 12
 ---
 {{<start>}}

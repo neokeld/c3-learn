@@ -1,6 +1,8 @@
 ---
 title: "Anonymous Functions"
 slug: "anonymous functions"
+aliases:
+ - "/More/31"
 weight: 18
 ---
 {{<start>}}

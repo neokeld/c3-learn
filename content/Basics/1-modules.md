@@ -1,6 +1,8 @@
 ---
 title: "Modules"
 slug: "modules"
+aliases:
+ - "/Basics/1"
 weight: 1
 ---
 {{<start>}}

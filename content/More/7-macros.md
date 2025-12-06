@@ -1,6 +1,8 @@
 ---
 title: "Macros"
 slug: "macros"
+aliases:
+ - "/More/20"
 weight: 7
 ---
 {{<start>}}

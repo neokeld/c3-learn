@@ -1,6 +1,8 @@
 ---
 title: "Named Arguments"
 slug: "named arguments"
+aliases:
+ - "/More/16"
 weight: 3
 ---
 {{<start>}}

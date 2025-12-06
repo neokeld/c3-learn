@@ -1,6 +1,8 @@
 ---
 title: "Reflection"
 slug: "reflection"
+aliases:
+ - "/More/19"
 weight: 6
 ---
 {{<start>}}

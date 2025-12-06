@@ -1,6 +1,8 @@
 ---
 title: "Nextcase"
 slug: "nextcase"
+aliases:
+ - "/Basics/9"
 weight: 9
 ---
 {{<start>}}

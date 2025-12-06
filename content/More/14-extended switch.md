@@ -1,6 +1,8 @@
 ---
 title: "Extended Switch"
 slug: "extended switch"
+aliases:
+ - "/More/27"
 weight: 14
 ---
 {{<start>}}

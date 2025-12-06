@@ -1,6 +1,8 @@
 ---
 title: "Asm Block"
 slug: "asm block"
+aliases:
+ - "/More/14"
 weight: 1
 ---
 {{<start>}}

@@ -1,6 +1,8 @@
 ---
 title: "Default Arguments"
 slug: "default arguments"
+aliases:
+ - "/More/15"
 weight: 2
 ---
 {{<start>}}

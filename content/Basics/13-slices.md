@@ -1,6 +1,8 @@
 ---
 title: "Slices"
 slug: "slices"
+aliases:
+ - "/Basics/13"
 weight: 13
 ---
 {{<start>}}

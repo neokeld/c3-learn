@@ -1,6 +1,8 @@
 ---
 title: "Defer"
 slug: "defer"
+aliases:
+ - "/More/17"
 weight: 4
 ---
 {{<start>}}

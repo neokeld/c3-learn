@@ -1,6 +1,8 @@
 ---
 title: "Function Pointers"
 slug: "function pointers"
+aliases:
+ - "/More/29"
 weight: 16
 ---
 {{<start>}}

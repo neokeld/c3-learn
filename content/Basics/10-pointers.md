@@ -1,6 +1,8 @@
 ---
 title: "Pointers"
 slug: "pointers"
+aliases:
+ - "/Basics/10"
 weight: 10
 ---
 {{<start>}}

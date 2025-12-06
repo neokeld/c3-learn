@@ -1,6 +1,8 @@
 ---
 title: "Constants"
 slug: "constants"
+aliases:
+ - "/Basics/3"
 weight: 3
 ---
 {{<start>}}

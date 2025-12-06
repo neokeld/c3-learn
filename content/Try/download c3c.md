@@ -1,5 +1,7 @@
 ---
 title: "Download C3 Compiler"
+aliases:
+ - "/Try/32"
 weight: 1
 ---
 ## Windows

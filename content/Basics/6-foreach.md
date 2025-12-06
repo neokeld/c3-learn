@@ -1,6 +1,8 @@
 ---
 title: "Foreach"
 slug: "foreach"
+aliases:
+ - "/Basics/6"
 weight: 6
 ---
 {{<start>}}

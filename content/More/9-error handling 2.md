@@ -1,6 +1,8 @@
 ---
 title: "Error Handling 2"
 slug: "error handling 2"
+aliases:
+ - "/More/22"
 weight: 9
 ---
 {{<start>}}

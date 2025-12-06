@@ -1,6 +1,8 @@
 ---
 title: "Structs & Unions"
 slug: "structs unions"
+aliases:
+ - "/Basics/11"
 weight: 11
 ---
 {{<start>}}

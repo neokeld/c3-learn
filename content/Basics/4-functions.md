@@ -1,6 +1,8 @@
 ---
 title: "Functions"
 slug: "functions"
+aliases:
+ - "/Basics/4"
 weight: 4
 ---
 {{<start>}}

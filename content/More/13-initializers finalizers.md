@@ -1,6 +1,8 @@
 ---
 title: "Initializers & Finalizers"
 slug: "initializers finalizers"
+aliases:
+ - "/More/26"
 weight: 13
 ---
 {{<start>}}

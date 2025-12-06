@@ -1,6 +1,8 @@
 ---
 title: "Imports"
 slug: "imports"
+aliases:
+ - "/Basics/2"
 weight: 2
 ---
 {{<start>}}
