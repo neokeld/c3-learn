@@ -19,7 +19,7 @@ weight: 6
 - `<type>.alignof` returns the alignment of a type.
 - `<type>.nameof` return the name of a type.
 
-See https://c3-lang.org/reflection/ for the full details.
+See https://c3-lang.org/generic-programming/reflection/ for the full details.
 {{<end>}}
 
 {{<defcod>}}
