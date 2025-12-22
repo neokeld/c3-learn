@@ -1,0 +1,42 @@
+name: Build & Deploy site
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+# Only allow one running at a time, but don't cancel it if it's already started
+concurrency:
+  group: "deploy"
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up ssh config
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KNOWNHOST" > ~/.ssh/known_hosts
+          echo "$SSH_KEY" > ~/.ssh/key
+          chmod 600 ~/.ssh/key
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_KNOWNHOST: ${{ secrets.SSH_KNOWNHOST }}
+      - name: Install hugo
+        run: sudo snap install hugo
+      - uses: actions/checkout@v6
+      - name: Build site
+        run: hugo -b $SITE
+        env:
+          SITE: "https://learn-c3.org"
+      - name: Deploy to server
+        run: rsync -e "ssh -i $HOME/.ssh/key -p $SSH_PORT" -rlt --chown="$SSH_USER:www" --delay-updates --delete-delay ./public $SSH_USER@$SSH_ADDR:$SSH_DIR
+        env:
+          SSH_ADDR: ${{ secrets.SSH_ADDR }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_DIR: ${{ secrets.SSH_DIR }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
