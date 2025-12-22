@@ -8,7 +8,7 @@ weight: 5
 C3 `for` loops are the same as in C.<br>
 A `for` loop is made of 3 sections that are enclosed in parentheses and separated by semicolons:
  - the init section, which is is run once when the loop is first started and
-   usually used to declare the counter (eg `int i = 0`).
+   usually used to declare the counter (eg `usz i = 0`).
  - the condition section, which is checked before the code in the loop body is
    executed each iteration of the loop. The loop will continue running until the
    condition is no longer true.
@@ -25,19 +25,19 @@ as the body. If a body is not needed a semicolon can be used instead.
 import std::io;
 fn void main()
 {
-	const MAX_ITERATIONS = 5;
-	for (int iteration = 0; iteration < MAX_ITERATIONS; iteration = iteration + 1)
+	const TIMES = 5;
+	for (usz i = 0; i < TIMES; i = i + 1)
 	{
-		io::printfn("Iteration %s", iteration);
+		io::printfn("Iteration %s", i);
 	}
 	// For loop with no body
-	for (int iteration = 0; iteration < MAX_ITERATIONS; loop_next(&iteration));
+	for (usz i = 0; i < TIMES; loop_next(&i));
 }
 
-fn void loop_next(int* iteration)
+fn void loop_next(usz* i)
 {
-	io::printfn("in loop_next %s", *iteration);
-	*iteration += 1;
+	io::printfn("in loop_next %s", *i);
+	*i += 1;
 }
 {{</codeblock>}}
 
@@ -48,20 +48,39 @@ iteration of the loop.
 import std::io;
 fn void main()
 {
-	const MAX_ITERATIONS = 10;
-	for (int iteration = 0; iteration < MAX_ITERATIONS; iteration++)
+	const TIMES = 10;
+	for (usz i = 0; i < TIMES; i++)
 	{
-		if (iteration == 3)
+		if (i == 3)
 		{
 			io::printn("Continuing at 3");
 			continue;
 		}
-		else if (iteration == 8)
+		else if (i == 8)
 		{
-			io::printn("Breaking");
+			io::printn("Breaking at 8");
 			break;
 		}
-		io::printfn("Iteration %s", iteration);
+		io::printfn("Iteration %s", i);
+	}
+}
+{{</codeblock>}}
+
+Repeatedly doing `collection[index]` when iterating over a collection such as an
+array or hashmap with a `for` loop can become a bit cumbersome, this is where
+[`foreach`](/Basics/foreach) comes in.
+{{<codeblock id="foreach">}}
+fn void main()
+{
+	int[3] items = {123, 456, 789};
+	for (usz i = 0; i < items.len; i++)
+	{
+		items[i] += items[i];
+	}
+
+	foreach (&item : items)
+	{
+		*item += *item;
 	}
 }
 {{</codeblock>}}
