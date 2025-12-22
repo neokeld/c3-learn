@@ -10,9 +10,8 @@ enabling the same paradigms and syntax where possible, while adding more modern
 quality of life features.<br>
 The purpose of this tutorial is to get you started programming in C3 as soon
 as possible.<br>
-Some familiarity with the C language is reccomended, but general programming
+Some familiarity with the C language is recommended, but general programming
 concepts will still be covered.<br>
-We begin with Hello World!
 {{<end>}}
 
 {{<defcod>}}
