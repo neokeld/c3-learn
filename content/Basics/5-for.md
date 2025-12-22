@@ -30,14 +30,6 @@ fn void main()
 	{
 		io::printfn("Iteration %s", i);
 	}
-	// For loop with no body
-	for (usz i = 0; i < TIMES; loop_next(&i));
-}
-
-fn void loop_next(usz* i)
-{
-	io::printfn("in loop_next %s", *i);
-	*i += 1;
 }
 {{</codeblock>}}
 
