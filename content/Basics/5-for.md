@@ -13,13 +13,13 @@ A `for` loop is made of 3 sections that are enclosed in parentheses and separate
    executed each iteration of the loop. The loop will continue running until the
    condition is no longer true.
  - the next section, which is run each iteration after the code in the loop body
-   runs, and is usually used to increase the counter.
+   runs, and is usually used to add to the counter.
 
 Any of these sections can be empty, but the semicolons must always be included.
 If the condition is empty it will loop forever.
 
 After the closing parenthesis there can either be a block or single line of code
-as a body. If a body is not needed a semicolon can be used instead.
+as the body. If a body is not needed a semicolon can be used instead.
 
 {{<codeblock id="sections">}}
 import std::io;
