@@ -6,7 +6,7 @@ aliases:
 weight: 5
 ---
 C3 `for` loops are the same as in C.<br>
-A `for` loop is made of 3 sections in parenthesis that are separated by semicolons:
+A `for` loop is made of 3 sections that are enclosed in parentheses and separated by semicolons:
  - the init section, which is is run once when the loop is first started and
    usually used to declare the counter (eg `int i = 0`).
  - the condition section, which is checked before the code in the loop body is
