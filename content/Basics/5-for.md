@@ -31,13 +31,13 @@ fn void main()
 		io::printfn("Iteration %s", iteration);
 	}
 	// For loop with no body
-	for (int iteration = 0; loop_condition(iteration, MAX_ITERATIONS); iteration++);
+	for (int iteration = 0; iteration < MAX_ITERATIONS; loop_next(&iteration));
 }
 
-fn bool loop_condition(int iteration, int max_iterations)
+fn void loop_next(int* iteration)
 {
-	io::printfn("in loop_cond %s", iteration);
-	return iteration < max_iterations;
+	io::printfn("in loop_next %s", *iteration);
+	*iteration += 1;
 }
 {{</codeblock>}}
 
