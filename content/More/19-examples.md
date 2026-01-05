@@ -19,7 +19,7 @@ Using types without namespacing can make your code more readable, especially wit
 longer module names, since you can instantly tell something is a type without needing
 to read the module path first.
 
-{{<codeblock id="types_general">}}
+```c3
 import std::io;
 fn void main()
 {
@@ -29,7 +29,7 @@ fn void main()
 	// Recommended
 	File c;
 }
-{{</codeblock>}}
+```
 
 ## For library developers
 
@@ -37,13 +37,13 @@ If writing a library, the names of public types should be prefixed with a shorte
 form of the library or module name to show what library it came from and prevent
 possible name conflicts from using a generic name like `File`, `Window`, or `Rectangle`.
 
-{{<codeblock id="0">}}
+```c3
 module raylib;
 // Not recommended, may cause a conflict with another library and need to be used as `raylib::Rectangle`
 struct Rectangle {float x, y, w, h;}
 // Recommended, won't cause a conflict with other rectangle types
 struct RLRectangle {float x, y, w, h;}
-{{</codeblock>}}
+```
 
 # Functions that allocate data
 
@@ -59,7 +59,7 @@ This pattern both shows which functions make allocations (and thus need their
 return values freed) due to the explicit allocator parameter and allows users
 to pass an allocator of their choice.
 
-{{<codeblock id="1">}}
+```c3
 import std::io;
 
 fn void main()
@@ -84,4 +84,4 @@ fn String some_func(Allocator alloc, usz count, int starting_value)
 		return buf.copy_str(alloc);
 	};
 }
-{{</codeblock>}}
+```

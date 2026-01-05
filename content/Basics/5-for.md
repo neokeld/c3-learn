@@ -21,7 +21,7 @@ If the condition is empty it will loop forever.
 After the closing parenthesis there can either be a block or single line of code
 as the body. If a body is not needed a semicolon can be used instead.
 
-{{<codeblock id="sections">}}
+```c3
 import std::io;
 fn void main()
 {
@@ -31,12 +31,12 @@ fn void main()
 		io::printfn("Iteration %s", i);
 	}
 }
-{{</codeblock>}}
+```
 
 The `break` keyword can be used to exit out of a loop early, and the `continue`
 keyword will skip the rest of the code in the body and continue at the next
 iteration of the loop.
-{{<codeblock id="break">}}
+```c3
 import std::io;
 fn void main()
 {
@@ -56,12 +56,12 @@ fn void main()
 		io::printfn("Iteration %s", i);
 	}
 }
-{{</codeblock>}}
+```
 
 Repeatedly doing `collection[index]` when iterating over a collection such as an
 array or hashmap with a `for` loop can become a bit cumbersome, this is where
 [`foreach`](/Basics/foreach) comes in.
-{{<codeblock id="foreach">}}
+```c3
 fn void main()
 {
 	int[3] items = {123, 456, 789};
@@ -75,4 +75,4 @@ fn void main()
 		*item += *item;
 	}
 }
-{{</codeblock>}}
+```

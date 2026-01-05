@@ -1,0 +1,207 @@
+{{ if not (.Page.Store.Get "codeblock-loaded") }}
+	<link rel="stylesheet" href="/lib/codemirror/lib/codemirror.css"></link>
+	<link rel="stylesheet" href="/lib/syntax-dark.css"></link>
+	<script src="/lib/jquery.js"></script>
+	<script src="/lib/codemirror/lib/codemirror.js"></script>
+	<script src="/lib/codemirror/mode/c3/c3.js"></script>
+	<style>
+	.fhor{
+		display:flex;
+		flex-direction:row;
+		gap:20px;
+	}
+	@media all and (max-width:1000px){
+		.fhor{
+			flex-wrap:wrap;
+		}
+	}
+
+	.c3block_buttons{
+		display:flex;
+		flex-direction:row;
+	}
+
+	/*.fvert{
+		width:100%;
+		height:650px;
+		max-width:500px;
+		display:flex;
+		flex-direction:column;
+		align-items:flex-end;
+	}*/
+
+	#doc{
+		padding:0;
+		margin:0;
+		width:80%;
+		height:100%;
+	}
+	@media all and (max-width:1000px){
+		#doc{
+			width:100%;
+		}
+	}
+
+	.CodeMirror{
+		width: 100%;
+		width: -moz-available;
+		width: -webkit-fill-available;
+		width: fill-available;
+		height:100%;
+		border:solid 1px #295E92;
+	}
+
+	.stdout{
+		font-family:Consolas, Courier;
+		font-size:14px;
+		background-color:#FAFEFF;
+		color:#111111;
+		width: 100%;
+		/*height: 8em;*/
+		/*overflow-y: auto;*/
+		max-height: 20em;
+		border:solid 1px #295E92;
+		border-top-width:0;
+		padding:6px;
+		margin:0;
+		tab-size:4;
+	}
+
+	.stdout:focus{
+		outline:none;
+	}
+
+	.stdout::selection{
+		background-color:#9BBFE3;
+	}
+
+	button{
+		color:#000000;
+		font-size:14px;
+		border:solid 1px #295E92;
+		padding:0;
+		margin:0;
+		width:80px;
+		height:30px;
+	}
+
+	.copyb{
+		background-color:#D2E0ED;
+		border-bottom-width:0;
+		border-right-width:0;
+	}
+
+	.copyb:hover{
+		background-color:#9FBDD9;
+	}
+
+	.clearb{
+		background-color:#EDD1D1;
+		border-bottom-width:0;
+		border-right-width:0;
+	}
+
+	.clearb:hover{
+		background-color:#E1B3B3;
+	}
+
+	.resetb{
+		background-color:#EDD1D1;
+		border-bottom-width:0;
+		border-right-width:0;
+	}
+
+	.resetb:hover{
+		background-color:#E1B3B3;
+	}
+
+	.runb{
+		background-color:#D1EDD5;
+		border-bottom-width:0;
+	}
+
+	.runb:hover{
+		background-color:#B3E1BA;
+	}
+	</style>
+	{{ .Page.Store.Set "codeblock-loaded" true }}
+{{ end }}
+{{ if not (.Page.Store.Get "codeblock-id") }}
+	{{ .Page.Store.Set "codeblock-id" 0 }}
+{{ end }}
+{{ .Page.Store.Add "codeblock-id" 1 }}
+{{ $id := (.Page.Store.Get "codeblock-id") }}
+
+<div class="c3block">
+	<script>
+	$(document).ready(() => {
+		const STDOUT = document.getElementById('stdout-{{$id}}');
+		const STDIN = document.getElementById('stdin-{{$id}}');
+		const trim_newline = (str) => str.endsWith("\n") ? str.slice(0, -1) : str;
+		let defcod = {{ .Inner }}.trim();
+
+		let code = $("#stdin-{{$id}}")[0];
+		let editor = CodeMirror.fromTextArea(code, {
+			mode: "c3",
+			tabSize: 4,
+			indentUnit: 4,
+			indentWithTabs: true,
+			lineNumbers : false,
+		});
+		editor.getDoc().setValue(defcod);
+
+
+		$("#clear-{{$id}}").click(() => {
+			STDOUT.textContent= "";
+			STDOUT.hidden = true;
+			editor.getDoc().setValue('');
+		})
+		$("#reset-{{$id}}").click(() => {
+			editor.getDoc().setValue(defcod);
+			STDOUT.textContent= "";
+			STDOUT.hidden = true;
+		})
+		$("#copy-{{$id}}").click(() => {
+			var e = document.getElementsByClassName('CodeMirror');
+			// setTimeout(function() {
+			// 	e[0].style.backgroundColor="#FFFFFF";
+			// }, 30);
+			// e[0].style.backgroundColor="#D2E0ED";
+			navigator.clipboard.writeText(editor.getValue());
+		})
+		$("#run-{{$id}}").click(() => {
+			STDOUT.hidden = false;
+			STDOUT.style.height = ""; // shrink stdout to its default size so that the `Processing...` text doesn't have a large border from the previous stdout
+			STDOUT.style.color="#111111";
+			STDOUT.textContent= "Processing...";
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", "https://api.learn-c3.org/");
+			xhr.responseType = "json";
+			xhr.send(JSON.stringify({c: editor.getValue()}));
+			xhr.onload = () => {
+				const res = xhr.response;
+				if (res.compile.stderr != "") {
+					STDOUT.style.color="red";
+					STDOUT.innerHTML = trim_newline(res.compile.stderr);
+				} else {
+					STDOUT.innerHTML = trim_newline(res.run.stdout);
+				}
+				// resize stdout to the height of its text (bounded by max-height of 20em)
+				STDOUT.style.height = STDOUT.scrollHeight + "px";
+			}
+		})
+		// console.log("Code block {{$id}} loaded");
+	})
+	</script>
+
+	<div class="c3block_buttons">
+		<button class="clearb" id="clear-{{$id}}">CLEAR</button>
+		<button class="resetb" id="reset-{{$id}}">RESET</button>
+		<button class="copyb"  id="copy-{{$id}}">COPY</button>
+		<button class="runb"   id="run-{{$id}}">RUN</button>
+	</div>
+	<div>
+		<textarea id="stdin-{{$id}}"></textarea>
+		<textarea id="stdout-{{$id}}" class="stdout" readonly hidden></textarea>
+	</div>
+</div>
