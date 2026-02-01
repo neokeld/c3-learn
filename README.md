@@ -4,7 +4,7 @@ The [learn-c3.org](https://learn-c3.org) website source code.
 If you have any suggestions for what could be added or changed, feel free
 to open an issue or PR.
 
-This website is built with Hugo. You can run it locally with hugo server
+This website is built with Hugo. You can run it locally with `hugo server`
 or with docker using: 
 
 ```
