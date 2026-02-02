@@ -26,8 +26,12 @@ jobs:
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
           SSH_KNOWNHOST: ${{ secrets.SSH_KNOWNHOST }}
-      - name: Install hugo
-        run: sudo apt install -y hugo
+      #- name: Install hugo
+      #  run: sudo snap install hugo
+      - uses: peaceiris/actions-hugo@v3.0.0
+        with:
+          hugo-version: latest
+          extended: true
       - uses: actions/checkout@v6
       - name: Build site
         run: hugo -b $SITE
