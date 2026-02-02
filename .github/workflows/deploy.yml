@@ -27,7 +27,7 @@ jobs:
           SSH_KEY: ${{ secrets.SSH_KEY }}
           SSH_KNOWNHOST: ${{ secrets.SSH_KNOWNHOST }}
       - name: Install hugo
-        run: sudo snap install hugo
+        run: sudo apt install -y hugo
       - uses: actions/checkout@v6
       - name: Build site
         run: hugo -b $SITE
