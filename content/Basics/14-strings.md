@@ -8,14 +8,15 @@ weight: 14
 {{<start>}}
 ZString -> String (view, no copy)
 ```
-import io;
+import std::io;
 
 fn void demo_z_to_s() {
-    ZString z = "Hello\0";
+    ZString z = "Hello";
+    assert(z[z.len()] == '\0'); // The ZString ends in '\0'
     String  s = z.str_view();
 
     // s.len is the length (without the '\0')
-    io::printfn("len = %zu", s.len);
+    io::printfn("len = %d", s.len);
 }
 ```
 String -> ZString
@@ -32,12 +33,12 @@ fn void demo_s_to_z() {
 ```
 DString -> String
 ```
-import io;
+import std::io;
  
 fn void demo_ds_to_s() {
     DString ds = dstring::new(mem, "C3");
     String  v  = ds.str_view();      // view (no copy)
-    String  c  = ds.copy_str();      // independent copy
+    String  c  = ds.copy_str(mem);   // independent copy
 
     io::printfn(c);
 }
@@ -46,12 +47,14 @@ String -> DString
 ```
 fn void demo_s_to_ds() {
     String s  = "C3 rocks";
-    DString ds = dstring::new(s);
-    ds.append_chars("!"); // example of dstring append method
+    DString ds = dstring::new(mem, s);
+    ds.append_string("!"); // example of dstring append method
 }
 ```
 Using char**
 ```
+import libc;
+
 // Example of a function that takes a char**
 fn void print_params(char** params, int count) {
     for (int i = 0; i < count; i += 1) {
