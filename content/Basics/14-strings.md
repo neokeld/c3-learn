@@ -7,7 +7,7 @@ weight: 14
 ---
 {{<start>}}
 ZString -> String (view, no copy)
-```
+```c3 {norun=true}
 import std::io;
 
 fn void demo_z_to_s() {
@@ -20,7 +20,7 @@ fn void demo_z_to_s() {
 }
 ```
 String -> ZString
-```
+```c3 {norun=true}
 import libc;
 
 fn void demo_s_to_z() {
@@ -32,7 +32,7 @@ fn void demo_s_to_z() {
 }
 ```
 DString -> String
-```
+```c3 {norun=true}
 import std::io;
  
 fn void demo_ds_to_s() {
@@ -44,7 +44,7 @@ fn void demo_ds_to_s() {
 }
 ```
 String -> DString
-```
+```c3 {norun=true}
 fn void demo_s_to_ds() {
     String s  = "C3 rocks";
     DString ds = dstring::new(mem, s);
@@ -52,7 +52,7 @@ fn void demo_s_to_ds() {
 }
 ```
 Using char**
-```
+```c3 {norun=true}
 import libc;
 
 // Example of a function that takes a char**
