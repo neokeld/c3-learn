@@ -186,7 +186,7 @@
 						STDOUT.style.color="red";
 						STDOUT.innerHTML = trim_newline(res.compile.stderr);
 					} else {
-						STDOUT.innerHTML = trim_newline(res.run.stdout);
+						STDOUT.innerHTML = trim_newline(res.run.output);
 					}
 					// resize stdout to the height of its text (bounded by max-height of 20em)
 					STDOUT.style.height = STDOUT.scrollHeight + "px";
